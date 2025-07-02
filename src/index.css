@@ -1,0 +1,1064 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    touch-action: manipulation;
+    -ms-touch-action: manipulation;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-text-size-adjust: 100%;
+    overscroll-behavior: none;
+    -webkit-user-zoom: none;
+    -moz-user-zoom: none;
+    -ms-user-zoom: none;
+    user-zoom: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', Georgia, serif;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+  }
+
+  body {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+  }
+
+  /* Prevent zoom on input fields */
+  input, textarea, select {
+    font-size: 16px !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  /* Site-wide content container */
+  .site-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+  }
+
+  /* Section spacing - consistent throughout */
+  .section-spacing {
+    padding: 80px 0;
+  }
+
+  @media (max-width: 768px) {
+    .site-container {
+      padding: 60px 15px;
+    }
+
+    .section-spacing {
+      padding: 60px 0;
+    }
+
+    /* Mobile image optimization */
+    img {
+      max-width: 100% !important;
+      height: auto !important;
+      object-fit: cover;
+    }
+
+    /* Mobile responsive containers */
+    .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
+      max-width: 100% !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+
+    /* Mobile text sizing */
+    h1 {
+      font-size: clamp(1.75rem, 8vw, 2.5rem) !important;
+      line-height: 1.2 !important;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 6vw, 2rem) !important;
+      line-height: 1.3 !important;
+    }
+
+    h3 {
+      font-size: clamp(1.25rem, 5vw, 1.5rem) !important;
+      line-height: 1.4 !important;
+    }
+
+    p, div {
+      font-size: clamp(0.875rem, 4vw, 1rem) !important;
+      line-height: 1.5 !important;
+    }
+
+    /* Mobile button optimization */
+    button, .btn-primary-slim, .btn-ghost-slim, .btn-uber-eats-slim {
+      min-height: 44px !important;
+      padding: 12px 20px !important;
+      font-size: 14px !important;
+      width: 100% !important;
+      margin-bottom: 8px !important;
+    }
+
+    /* Mobile grid fixes */
+    .grid {
+      gap: 1rem !important;
+    }
+
+    .grid-cols-2 {
+      grid-template-columns: 1fr !important;
+    }
+
+    .grid-cols-3 {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Mobile flex fixes */
+    .flex-row {
+      flex-direction: column !important;
+    }
+
+    .sm\:flex-row {
+      flex-direction: column !important;
+    }
+
+    /* Mobile navbar center alignment */
+    .mobile-nav-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Hero section mobile spacing and background */
+    .hero-mobile-spacing {
+      padding-top: 120px !important;
+      background-size: cover !important;
+      background-position: center !important;
+    }
+
+    /* Footer mobile stacking */
+    .footer-mobile-stack {
+      flex-direction: column;
+      text-align: center;
+      gap: 2rem;
+    }
+
+    .footer-mobile-stack > * {
+      width: 100%;
+    }
+
+    /* Form mobile optimization */
+    .form-mobile-optimize input,
+    .form-mobile-optimize textarea,
+    .form-mobile-optimize select {
+      font-size: 16px !important;
+      padding: 16px !important;
+      min-height: 48px;
+    }
+
+    .form-mobile-optimize button {
+      min-height: 48px;
+      font-size: 16px;
+    }
+  }
+
+  /* Congo Pattern Divider - Blue, Red, Yellow vertical bars */
+  .congo-pattern-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px auto;
+    width: 200px;
+    height: 4px;
+    position: relative;
+  }
+
+  .congo-pattern-divider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      to right,
+      #007FFF 0px,
+      #007FFF 8px,
+      #FF0000 8px,
+      #FF0000 16px,
+      #FFD700 16px,
+      #FFD700 24px
+    );
+    border-radius: 2px;
+  }
+
+  /* Navbar Pattern Background */
+  .navbar-pattern {
+    position: relative;
+  }
+
+  .navbar-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(0, 127, 255, 0.1) 0px,
+      rgba(0, 127, 255, 0.1) 4px,
+      rgba(255, 0, 0, 0.1) 4px,
+      rgba(255, 0, 0, 0.1) 8px,
+      rgba(255, 215, 0, 0.1) 8px,
+      rgba(255, 215, 0, 0.1) 12px
+    );
+    background-size: 12px 12px;
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  /* Enhanced CTA Button Styling with Hover Effects - Slimmer versions */
+  .btn-primary-slim {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-radius: 50px;
+    padding: 8px 16px;
+    color: #2C2C2C;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  .btn-primary-slim::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .btn-primary-slim:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .btn-primary-slim:hover {
+    background: linear-gradient(135deg, #E6C200, #FF8C00);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5), 0 0 15px rgba(255, 165, 0, 0.3);
+    color: #2C2C2C;
+  }
+
+  /* Ghost button styling with enhanced hover - Slimmer */
+  .btn-ghost-slim {
+    background: transparent;
+    border: 2px solid #8B0000;
+    color: #8B0000;
+    border-radius: 50px;
+    padding: 8px 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  .btn-ghost-slim::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #8B0000;
+    transition: left 0.3s ease;
+    z-index: -1;
+  }
+
+  .btn-ghost-slim:hover::before {
+    left: 0;
+  }
+
+  .btn-ghost-slim:hover {
+    color: white;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(139, 0, 0, 0.3);
+  }
+
+  /* Uber Eats CTA Button - Slimmer */
+  .btn-uber-eats-slim {
+    background: linear-gradient(135deg, #00D2AA, #06C167);
+    border-radius: 50px;
+    padding: 8px 16px;
+    color: white;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 210, 170, 0.3);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  .btn-uber-eats-slim:hover {
+    background: linear-gradient(135deg, #00B894, #00A085);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 210, 170, 0.4);
+    color: white;
+  }
+
+  /* Legacy button styles for backward compatibility */
+  .btn-primary {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-radius: 50px;
+    padding: 14px 28px;
+    color: #2C2C2C;
+    border: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .btn-primary:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #E6C200, #FF8C00);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6), 0 0 20px rgba(255, 165, 0, 0.4);
+    color: #2C2C2C;
+  }
+
+  /* Ghost button styling with enhanced hover */
+  .btn-ghost {
+    background: transparent;
+    border: 2px solid #8B0000;
+    color: #8B0000;
+    border-radius: 50px;
+    padding: 14px 28px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-ghost::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #8B0000;
+    transition: left 0.3s ease;
+    z-index: -1;
+  }
+
+  .btn-ghost:hover::before {
+    left: 0;
+  }
+
+  .btn-ghost:hover {
+    color: white;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(139, 0, 0, 0.3);
+  }
+
+  /* Uber Eats CTA Button */
+  .btn-uber-eats {
+    background: linear-gradient(135deg, #00D2AA, #06C167);
+    border-radius: 50px;
+    padding: 14px 28px;
+    color: white;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 210, 170, 0.3);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-uber-eats:hover {
+    background: linear-gradient(135deg, #00B894, #00A085);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 210, 170, 0.4);
+    color: white;
+  }
+
+  /* Service Cards with Consistent Styling */
+  .service-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    height: 100%;
+    min-height: 420px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border-color: #8B0000;
+  }
+
+  .service-card .service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .service-card .service-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #8B0000;
+    margin-bottom: 12px;
+    font-family: 'Montserrat', serif;
+  }
+
+  .service-card .service-description {
+    color: #6B7280;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 16px;
+  }
+
+  /* Card styling */
+  .card-hover {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Touch targets for mobile */
+  @media (max-width: 768px) {
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* Timeline styling */
+  .timeline-item {
+    border-left: 4px solid #8B0000;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    position: relative;
+    background: linear-gradient(135deg, rgba(139, 0, 0, 0.05), rgba(255, 215, 0, 0.05));
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+    background: #8B0000;
+    border-radius: 50%;
+  }
+
+  .timeline-year {
+    color: #FFD700;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  /* Clean tribal pattern overlay - REMOVED horizontal stripes */
+  .tribal-pattern {
+    background-color: #0C0C0C; /* Clean solid background */
+    position: relative;
+  }
+
+  /* Optional: Add subtle texture without horizontal stripes */
+  .tribal-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(139, 0, 0, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
+    background-size: 100px 100px, 150px 150px;
+    background-position: 0 0, 50px 50px;
+    pointer-events: none;
+  }
+
+  /* Compact Back to top button - 40px red circle */
+  .back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #8B0000;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .back-to-top:hover {
+    background: #A00000;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(139, 0, 0, 0.6);
+  }
+
+  /* WhatsApp floating button */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  .whatsapp-float:hover {
+    background: #128C7E;
+    transform: scale(1.1);
+    color: white;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+  }
+
+  /* Animated WhatsApp chat prompt */
+  .whatsapp-prompt {
+    position: fixed;
+    bottom: 120px;
+    right: 20px;
+    background: white;
+    color: #2C2C2C;
+    padding: 12px 16px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 999;
+    max-width: 200px;
+    text-align: center;
+  }
+
+  .whatsapp-prompt.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .whatsapp-prompt::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+  }
+
+  /* Footer icon buttons */
+  .footer-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .footer-icon-btn:hover {
+    transform: scale(1.1);
+    color: white;
+  }
+
+  /* Lightbox styles */
+  .lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: 20px;
+  }
+
+  .lightbox-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .lightbox-content {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .lightbox-video {
+    width: 90vw;
+    height: 50.625vw; /* 16:9 aspect ratio */
+    max-width: 1200px;
+    max-height: 675px;
+    border-radius: 8px;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    z-index: 10000;
+  }
+
+  .lightbox-close:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+  }
+
+  /* Image Modal Nav Buttons - Small red circles at bottom */
+  .lightbox-nav {
+    position: absolute;
+    bottom: 20px;
+    background: #8B0000;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    z-index: 10000;
+  }
+
+  .lightbox-nav:hover {
+    background: #A00000;
+    transform: scale(1.1);
+  }
+
+  .lightbox-nav.prev {
+    left: 20px;
+  }
+
+  .lightbox-nav.next {
+    right: 20px;
+  }
+
+  /* Mobile carousel arrows - 30-35px red circles positioned under images */
+  .carousel-arrows {
+    position: static;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .carousel-arrow {
+    position: static;
+    transform: none;
+    background: #8B0000;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-arrow:hover {
+    background: #A00000;
+    transform: scale(1.1);
+  }
+
+  /* Mobile lightbox adjustments */
+  @media (max-width: 768px) {
+    .lightbox-content {
+      max-width: 95vw;
+      max-height: 85vh;
+    }
+
+    .lightbox-video {
+      width: 95vw;
+      height: 53.4375vw; /* 16:9 aspect ratio */
+    }
+
+    .lightbox-close {
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+    }
+
+    .lightbox-nav {
+      width: 30px;
+      height: 30px;
+      font-size: 14px;
+      bottom: 10px;
+    }
+
+    .lightbox-nav.prev {
+      left: 10px;
+    }
+
+    .lightbox-nav.next {
+      right: 10px;
+    }
+  }
+
+  /* Navbar active link highlighting */
+  .nav-link-active {
+    color: #FFD700 !important;
+    font-weight: 700;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
+    }
+    50% {
+      box-shadow: 0 4px 25px rgba(139, 0, 0, 0.6), 0 0 30px rgba(255, 0, 0, 0.4);
+    }
+  }
+
+  /* Performance optimizations */
+  img, iframe {
+    loading: lazy;
+  }
+
+  /* WebP support detection */
+  .webp .jpg-fallback {
+    display: none;
+  }
+
+  .no-webp .webp-image {
+    display: none;
+  }
+
+  /* Video responsive styling */
+  .video-responsive {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .video-responsive iframe,
+  .video-responsive video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Equal height grid system */
+  .equal-height-grid {
+    display: grid;
+    grid-template-rows: 1fr;
+  }
+
+  .equal-height-grid > * {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Menu tab active state */
+  .menu-tab-active {
+    background: #8B0000 !important;
+    color: white !important;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+  }
+
+  /* Enhanced dish tag styling */
+  .dish-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #2C2C2C;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    border: 2px solid #E6C200;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Enhanced menu badge visibility */
+  .menu-badge {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #2C2C2C;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    border: 1px solid #E6C200;
+    box-shadow: 0 2px 6px rgba(255, 215, 0, 0.4);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Structured data and SEO improvements */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Form validation styles */
+  .form-field-error {
+    border-color: #EF4444 !important;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2) !important;
+  }
+
+  .form-error-message {
+    color: #EF4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+
+  .form-success-message {
+    color: #10B981;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+
+  /* Gallery image responsiveness - show full images */
+  .gallery-grid img {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: 1fr !important;
+      gap: 1rem !important;
+    }
+  }
+}
